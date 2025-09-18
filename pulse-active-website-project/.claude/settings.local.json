@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Reymart/Documents/Coding/projects/pulse-active-project/**)",
+      "Read(//c/Users/Reymart/Documents/Coding/projects/roameo-frontend/**)",
+      "Bash(mkdir:*)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
