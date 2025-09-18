@@ -4,84 +4,37 @@
     class="h-full bg-cover bg-center bg-no-repeat relative min-h-screen"
     :style="{
       backgroundImage: `url(${heroImage})`,
-      backgroundAttachment: 'fixed'
+      backgroundAttachment: 'fixed',
     }"
   >
-    <!-- Decorative Elements -->
-    <!-- Top Left Asterisk -->
-    <div v-motion="getSlideUpMotion(120)" class="el-absolute absolute top-35 left-36 z-10 opacity-90 hidden lg:block">
-      <img :src="unionAsset" alt="decorative asterisk" class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24">
-    </div>
 
-    <!-- Top Right Grid Dots -->
-    <div v-motion="getSlideUpMotion(120)" class="el-absolute absolute top-35 right-60 z-10 opacity-90 hidden lg:block">
-      <img :src="gridDots" alt="decorative dots" class="w-20 h-12 md:w-24 md:h-16 lg:w-34 lg:h-25">
-    </div>
+  <div class="jimmy-bot">
 
-    <!-- Bottom Left Grid Dots -->
-    <div v-motion="getSlideUpMotion(120)" class="el-absolute absolute bottom-32 left-28 z-10 opacity-90 hidden lg:block">
-      <img :src="gridDots" alt="decorative dots" class="w-16 h-10 md:w-20 md:h-12 lg:w-30 lg:h-30">
-    </div>
+  </div>
 
     <section class="hero-section min-h-screen font-plus-jakarta grid place-items-center relative">
-      <div
-        id="main"
-        class="hero-container px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center text-center w-full max-w-7xl py-20"
-      >
-        <h1 v-motion="getSlideUpMotion(200)"
-            class="hero-title text-white font-semibold text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[86px] leading-tight drop-shadow-lg">
-          Pulse Active - Stay Fit, Stay Active
-        </h1>
-        <div class="w-full max-w-6xl mt-8">
-          <!-- <flight-booking-form></flight-booking-form> -->
-          <p class="text-white text-lg">Your fitness journey starts here</p>
+      <div class="hero-container w-full flex flex-col justify-center items-center text-center mx-auto">
+        <h1 class="font-extrabold text-white text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Transform Your</h1>
+        <h1 class=" font-extrabold text-[#f97316] text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Body & Mind</h1>
+        <p class="description text-center text-white font-semibold text-2xl max-w-[925px]">Join Pulse Active Gym and discover your strongest self with state-of-the-art equipment, expert trainers, and a supportive community.</p>
+        <div class="cta-buttons flex flex-row py-4 gap-x-4">
+          <button class="px-8 py-2 text-[18px] bg-[#f97316] rounded-full text-sm font-extrabold transition-colors cursor-pointer text-white hover:bg-slate-600">
+            Start Your Journey
+          </button>
+          <button class="px-8 py-2 text-[18px] bg-white rounded-full text-sm font-extrabold transition-colors cursor-pointer text-black hover:bg-gray-100">
+            View Classes
+          </button>
         </div>
       </div>
-      <div class="fixed-btn el-absolute absolute bottom-19 right-15 z-15 hidden lg:block">
-        <!-- Bottom Right Asterisk -->
-        <a href="#" class="px-2 py-4 bg-[#FFE759] uppercase rounded-xl w-[7.25rem] h-[36px] text-[.625rem] cursor-pointer font-bold flex items-center justify-center gap-x-2 z-15">
-          <span class="text-[#000]">explore</span>
-          <img :src="downArrow" alt="" class="w-3 h-3">
-        </a>
-        <div v-motion="getSlideUpMotion(200)" class="z-[-1] el-absolute absolute bottom-0 top-[-53px]">
-          <img :src="unionAsset" alt="decorative asterisk" class="w-20 h-20 md:w-24 md:h-24 lg:w-24 lg:h-24">
-        </div>
-      </div>
-      <div class=" el-absolute absolute bottom-[-68px] sm:hidden xs:block">
-        <img :src="unionPng" alt="" class="h-auto w-[8.4375rem]">
-      </div>
+
     </section>
   </div>
 
-  <!-- Sections will be added as components are created -->
-  <!-- <partner-section></partner-section> -->
-  <!-- <destination-section></destination-section> -->
-  <!-- <go-next-section></go-next-section> -->
-  <!-- <feature-stay-section></feature-stay-section> -->
-  <!-- <travel-journey></travel-journey> -->
-  <!-- <top-travel-tea></top-travel-tea> -->
-  <!-- <roameo-tv></roameo-tv> -->
-  <!-- <featured-episode></featured-episode> -->
-  <!-- <testimonials-section></testimonials-section> -->
-  <!-- <newsletter-section></newsletter-section> -->
-  <!-- <faq-section></faq-section> -->
 
 </template>
 
 <script>
-// Components will be imported when created
-// import FlightBookingForm from '@/components/FlightBookingForm.vue';
-// import PartnerSection from '@/sections/PartnerSection.vue';
-// import DestinationSection from '@/sections/DestinationSection.vue';
-// import GoNextSection from '@/sections/GoNextSection.vue';
-// import FeatureStaySection from '@/sections/FeatureStaySection.vue';
-// import TravelJourney from '@/sections/TravelJourney.vue';
-// import RoameoTv from '@/sections/RoameoTv.vue';
-// import TestimonialsSection from '@/sections/TestimonialsSection.vue';
-// import NewsletterSection from '@/sections/NewsletterSection.vue';
-// import TopTravelTea from '@/sections/TopTravelTea.vue';
-// import FaqSection from '@/sections/FaqSection.vue';
-// import FeaturedEpisode from '@/sections/FeaturedEpisode.vue';
+
 
 import { useMotion } from '@/mixins/useMotion.js'
 
@@ -90,28 +43,12 @@ export default {
   mixins: [ useMotion ],
 
   components: {
-    // Components will be registered when created
-    // FlightBookingForm,
-    // PartnerSection,
-    // DestinationSection,
-    // GoNextSection,
-    // FeatureStaySection,
-    // TravelJourney,
-    // RoameoTv,
-    // TestimonialsSection,
-    // NewsletterSection,
-    // TopTravelTea,
-    // FaqSection,
-    // FeaturedEpisode,
+
   },
   data() {
     return {
-      //heroImage: new URL('@/assets/roameo-hero-image.jpg', import.meta.url).href,
-      downArrow: new URL('@/assets/down-arrow.svg', import.meta.url).href,
-      unionAsset: new URL('@/assets/union-asset.svg', import.meta.url).href,
-      gridDots: new URL('@/assets/grid-dots.svg', import.meta.url).href,
-      heroImage: new URL('@/assets/hero-image-2.jpg', import.meta.url).href,
-      unionPng: new URL('@/assets/union-png.png', import.meta.url).href,
+      heroImage: new URL('@/assets/hero-image.jpg', import.meta.url).href,
+
     }
   }
 }

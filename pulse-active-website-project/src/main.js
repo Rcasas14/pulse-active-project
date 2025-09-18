@@ -1,10 +1,17 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import router from './router'
+import './style.css';
 
-const app = createApp(App)
+import { createApp } from 'vue';
+import App from './App.vue';
+import VueLazyLoad from 'vue-lazyload'
+import router from './router';
+import { MotionPlugin } from '@vueuse/motion';
 
-app.use(router)
+const app = createApp(App);
+
+app.use(MotionPlugin).use(router).use(VueLazyLoad, {
+    preLoad: 1.3,
+    attempt: 3,
+    throttleWait: 500
+});
 
 app.mount('#app')
