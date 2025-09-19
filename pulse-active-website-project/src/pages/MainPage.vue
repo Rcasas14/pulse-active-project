@@ -29,12 +29,13 @@
 
     </section>
   </div>
-
+<feature-section></feature-section>
 
 </template>
 
 <script>
 
+import FeatureSection from '@/sections/FeatureSection.vue';
 
 import { useMotion } from '@/mixins/useMotion.js'
 
@@ -43,7 +44,7 @@ export default {
   mixins: [ useMotion ],
 
   components: {
-
+    FeatureSection,
   },
   data() {
     return {
