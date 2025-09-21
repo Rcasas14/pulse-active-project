@@ -30,12 +30,16 @@
     </section>
   </div>
 <feature-section></feature-section>
+<classes-section></classes-section>
+<membership-section></membership-section>
 
 </template>
 
 <script>
 
 import FeatureSection from '@/sections/FeatureSection.vue';
+import ClassesSection from '@/sections/ClassesSection.vue';
+import MembershipSection from '@/sections/MembershipSection.vue';
 
 import { useMotion } from '@/mixins/useMotion.js'
 
@@ -45,6 +49,8 @@ export default {
 
   components: {
     FeatureSection,
+    ClassesSection,
+    MembershipSection
   },
   data() {
     return {
