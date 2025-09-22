@@ -1,5 +1,5 @@
 <template>
-  <section class="testimonials-section bg-white py-16 lg:py-24 font-plus-jakarta">
+  <section class="testimonials-section py-16 lg:py-24 font-plus-jakarta bg-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header Section (unchanged) -->
       <div v-motion="getScrollSlideUpMotionBounce(230)" class="text-center mb-12 lg:mb-16">

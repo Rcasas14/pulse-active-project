@@ -1,7 +1,7 @@
 <template>
   <div
     id="home"
-    class="h-full bg-cover bg-center bg-no-repeat relative min-h-screen"
+    class="h-full bg-cover bg-center bg-no-repeat relative min-h-screen "
     :style="{
       backgroundImage: `url(${heroImage})`,
       backgroundAttachment: 'fixed',
@@ -12,7 +12,7 @@
 
   </div>
 
-    <section class="hero-section min-h-screen font-plus-jakarta grid place-items-center relative">
+    <section class="hero-section min-h-screen font-plus-jakarta grid place-items-center relative ">
       <div class="hero-container w-full flex flex-col justify-center items-center text-center mx-auto">
         <h1 class="font-extrabold text-white text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Transform Your</h1>
         <h1 class=" font-extrabold text-[#f97316] text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Body & Mind</h1>
@@ -32,6 +32,10 @@
 <feature-section></feature-section>
 <classes-section></classes-section>
 <membership-section></membership-section>
+<experts-section></experts-section>
+<testimonial-section></testimonial-section>
+<contact-form-section></contact-form-section>
+<faq-section></faq-section>
 
 </template>
 
@@ -40,6 +44,10 @@
 import FeatureSection from '@/sections/FeatureSection.vue';
 import ClassesSection from '@/sections/ClassesSection.vue';
 import MembershipSection from '@/sections/MembershipSection.vue';
+import ExpertsSection from '@/sections/ExpertsSection.vue';
+import TestimonialSection from '@/sections/TestimonialSection.vue';
+import ContactFormSection from '@/sections/ContactFormSection.vue';
+import FaqSection from '@/sections/FAQSection.vue';
 
 import { useMotion } from '@/mixins/useMotion.js'
 
@@ -50,7 +58,11 @@ export default {
   components: {
     FeatureSection,
     ClassesSection,
-    MembershipSection
+    MembershipSection,
+    ExpertsSection,
+    TestimonialSection,
+    ContactFormSection,
+    FaqSection
   },
   data() {
     return {

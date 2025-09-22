@@ -6,18 +6,21 @@
         <p class="text-slate-700 text-lg">Choose the perfect membership plan that fits your lifestyle and fitness goals.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative">
         <div v-for="(plan, index) in membershipPlans"
              :key="index"
-             class="membership-card flex flex-col bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 relative overflow-hidden"
-             :class="{ 'border-2 border-[#26C5D9]': plan.popular }">
+             class="membership-card premium-card standard-card flex flex-col items-center bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300  overflow-hidden"
+             :class="[
+                      { 'border-2 border-[#26C5D9]': plan.popular },
+                      { '!min-h-[600px]': plan.name === 'Premium' }
+                      ]">
 
           <!-- Most Popular Badge -->
           <div v-if="plan.popular" class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
             <span class="bg-[#26C5D9] text-white py-2 px-6 rounded-full text-sm font-medium">Most Popular</span>
           </div>
 
-          <div class="flex flex-col h-full p-8 pt-12">
+          <div class="flex flex-col h-full p-8 pt-12 w-full">
             <!-- Plan Header -->
             <div class="text-center mb-8">
               <h3 class="text-2xl font-bold text-black mb-4">{{ plan.name }}</h3>
@@ -39,8 +42,8 @@
             </div>
 
             <!-- CTA Button -->
-            <div class="mt-auto">
-              <button class="w-full py-4 rounded-[20px] font-medium text-white transition-all duration-300 hover:opacity-90"
+            <div class="mt-auto ">
+              <button class="w-full py-4 rounded-[20px] font-medium text-white transition-all duration-300 hover:opacity-90 cursor-pointer"
                       :class="plan.buttonClass">
                 Choose Plan
               </button>
@@ -110,8 +113,10 @@ export default {
 </script>
 
 <style scoped>
-.membership-card {
-  min-height: 500px;
+
+
+.membership-card .flex-grow {
+  flex: 1;
 }
 
 @media (max-width: 768px) {
