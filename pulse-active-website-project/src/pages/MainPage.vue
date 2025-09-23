@@ -8,9 +8,7 @@
     }"
   >
 
-  <div class="jimmy-bot">
-
-  </div>
+  <chat-bot-component></chat-bot-component>
 
     <section class="hero-section min-h-screen font-plus-jakarta grid place-items-center relative ">
       <div class="hero-container w-full flex flex-col justify-center items-center text-center mx-auto">
@@ -47,7 +45,9 @@ import MembershipSection from '@/sections/MembershipSection.vue';
 import ExpertsSection from '@/sections/ExpertsSection.vue';
 import TestimonialSection from '@/sections/TestimonialSection.vue';
 import ContactFormSection from '@/sections/ContactFormSection.vue';
-import FaqSection from '@/sections/FAQSection.vue';
+import FaqSection from '@/sections/FaqSection.vue'
+
+import ChatBotComponent from '@/components/ChatBotComponent.vue';
 
 import { useMotion } from '@/mixins/useMotion.js'
 
@@ -62,14 +62,16 @@ export default {
     ExpertsSection,
     TestimonialSection,
     ContactFormSection,
-    FaqSection
+    FaqSection,
+    ChatBotComponent
   },
   data() {
     return {
       heroImage: new URL('@/assets/hero-image.jpg', import.meta.url).href,
 
     }
-  }
+  },
+
 }
 </script>
 
@@ -81,30 +83,6 @@ export default {
   background-repeat: no-repeat;
 }
 
-/* Decorative elements responsive positioning */
-
-@media (min-width: 641px) and (max-width: 768px) {
-  /* Adjust positioning for tablet sizes */
-  .el-absolute:nth-of-type(1) { /* Top Left Asterisk */
-    top: 1rem;
-    left: 1rem;
-  }
-
-  .el-absolute:nth-of-type(2) { /* Top Right Grid Dots */
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .el-absolute:nth-of-type(3) { /* Bottom Left Grid Dots */
-    bottom: 8rem;
-    left: 1rem;
-  }
-
-  .el-absolute:nth-of-type(4) { /* Bottom Right Asterisk */
-    bottom: 1rem;
-    right: 1rem;
-  }
-}
 
 /* Extra small devices (mobile) */
 @media (max-width: 374px) {
@@ -197,18 +175,4 @@ export default {
   }
 }
 
-/* Fixed button hover effect */
-.fixed-btn a:hover {
-  background-color: #f5d943;
-  transition: all 0.3s ease;
-}
-
-/* Add subtle animations to decorative elements */
-.el-absolute img[alt*="decorative"] {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.el-absolute img[alt*="decorative"]:hover {
-  transform: scale(1.05);
-}
 </style>
