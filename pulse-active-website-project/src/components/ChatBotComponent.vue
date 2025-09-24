@@ -33,8 +33,10 @@
         </div>
 
         <!-- Modal Body -->
-        <div class="flex-1 bg-gray-50 rounded p-4">
-          <p class="text-gray-600">Chat content will go here...</p>
+        <div class="flex-1 bg-gray-50 rounded p-4 max-h-[400px]">
+          <div class="h-[350px]">
+            <p class="text-gray-600">Chat content will go here...</p>
+          </div>
         </div>
 
         <!-- Modal Footer -->
@@ -45,8 +47,9 @@
               type="text"
               v-model="inputValue"
               placeholder="Type Your Message..."
+
               >
-            <div class="w-[46px] h-[40px] bg-[#1a94ff] flex items-center justify-center rounded-[20px] pr-[2px] cursor-pointer hover: transition-all duration-300 ease-in-out">
+            <div class="w-[46px] h-[40px] bg-[#1a94ff] flex items-center justify-center rounded-[20px] pr-[2px] cursor-pointer hover: transition-all duration-300 ease-in-out" @click="temp()">
             <img :src="sendIcon" class="w-6 h-6" alt="">
           </div>
           </div>
@@ -92,6 +95,11 @@ export default {
       if(event.key === 'Escape' && this.showModal){
         this.closeModal()
       }
+    },
+    temp(){
+      //console.log(`${this.inputValue}`)
+
+      return this.inputValue
     }
   },
   mounted() {
