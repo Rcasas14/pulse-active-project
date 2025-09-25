@@ -3,7 +3,7 @@
   <div class="chat-head fixed bottom-8 md:bottom-8 md:right-8  sm:bottom-6 sm:right-6 z-[1000]">
     <button class="w-[60px] h-[60px] text-white border-none flex items-center justify-center shadow-[0_4px_20px_rgba(38,197,217,0.3)] bg-[#0088FF] rounded-full transition-all duration-300 ease-in-out hover:scale-110
                     hover:shadow-[0_6px_25px_rgba(38,197,217,0.4)] animate-pulse sm:w-[60px] sm:h-[60px] cursor-pointer"
-                    @click="showModal= true">
+                    @click="openModal()">
       <img :src="chatBubble" alt="" class="w-5 h-5 text-white">
     </button>
   </div>
@@ -33,23 +33,34 @@
         </div>
 
         <!-- Modal Body -->
-        <div class="flex-1 bg-gray-50 rounded p-4 max-h-[400px]">
-          <div class="h-[350px]">
-            <p class="text-gray-600">Chat content will go here...</p>
+        <div class="flex-1 bg-gray-50 rounded p-4 max-h-[400px] h-[400px] overflow-y-auto">
+          <div class="h-auto flex flex-col gap-y-4">
+            <div class="chat-bot-response flex flex-wrap justify-start items-center w-full ">
+              <p class="text-black bg-slate-200 text-[14px] lg:max-w-[350px] p-4 rounded-[20px]">Would you like me to help you set up the specific n8n workflow structure for your gym fitness RAG system, or do you need help with any other aspect of the integration?</p>
+            </div>
+            <div class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2 "
+                 >
+              <p  v-for="message in chatMessage" :key="message"
+                  class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] "
+                  :class="message.length ? 'bg-[#0088FF]' : 'bg-transparent'">{{ message }}</p>
+            </div>
           </div>
         </div>
 
         <!-- Modal Footer -->
-         <div class="footer flex flex-col items-center justify-between gap2 mb-4">
-          <div class="flex flex-row gap-x-4 w-full px-4">
+         <div class="footer flex flex-col items-center justify-between gap2 py-4">
+          <div class="flex flex-row gap-x-4 w-full px-4 relative">
             <input
-              class="w-full h-[50px] border rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6155F5] transition-colors"
+              class="w-full h-[50px] border  rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6155F5] transition-colors"
               type="text"
               v-model="inputValue"
               placeholder="Type Your Message..."
-
+              @keyup.enter="handleSend"
               >
-            <div class="w-[46px] h-[40px] bg-[#1a94ff] flex items-center justify-center rounded-[20px] pr-[2px] cursor-pointer hover: transition-all duration-300 ease-in-out" @click="temp()">
+              <div v-if="showError" class="text-red-500 font-semibold text-sm p-2 absolute bottom-2 right-20">
+                {{ errorMessage }}
+              </div>
+            <div class="w-[46px] h-[40px] bg-[#1a94ff] flex items-center justify-center rounded-[20px] pr-[2px] cursor-pointer hover: transition-all duration-300 ease-in-out" @click="handleSend()">
             <img :src="sendIcon" class="w-6 h-6" alt="">
           </div>
           </div>
@@ -76,15 +87,30 @@ export default {
 
       showModal : false,
       inputValue: '',
-      saveValue: ''
+      saveValue: '',
+
+      showBotMessage: false,
+      showUserMessage: false,
+      showError: false,
+      errorMessage: '',
+      chatMessage: [],
+      botMessage:[]
     }
   },
   methods: {
     toggleChat(){
       console.log('toggle chat clicked!')
     },
+    openModal(){
+      this.showModal = true
+    },
     closeModal(){
+      this.showUserMessage = false
+      this.showBotMessage = false
       this.showModal = false
+      this.showError = false;
+      this.errorMessage = '';
+      // this.chatMessage.length = 0
     },
     saveAndClose(){
       this.saveValue = this.inputValue
@@ -96,20 +122,43 @@ export default {
         this.closeModal()
       }
     },
-    temp(){
-      //console.log(`${this.inputValue}`)
+    handleSend(){
+      // Reset error state
+      this.showError = false;
+      this.errorMessage = '';
 
-      return this.inputValue
+    // Validate input
+    if (!this.inputValue || this.inputValue.trim() === '') {
+      this.showError = true;
+      this.errorMessage = 'Required!';
+      return;
     }
+
+      this.chatMessage.push(this.inputValue.trim())
+      this.inputValue = ''
+      console.log(this.chatMessage)
+      return this.inputValue
+
+    // handleEnter(event){
+    //   if(event.key === 'Enter' && this.showModal){
+    //     this.handleSend()
+    //   }
+    // }
+
   },
   mounted() {
     // Add escape key listener when component mounts
     document.addEventListener('keydown', this.handleEscape);
+    //document.addEventListener('keydown', this.handleEnter);
   },
   beforeUnmount() {
     // Clean up event listener when component unmounts
     document.removeEventListener('keydown', this.handleEscape);
+    //document.removeEventListener('keydown', this.handleEnter);
+    this.chatMessage.length = 0
   }
+ }
+
 }
 </script>
 
