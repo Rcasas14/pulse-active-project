@@ -196,10 +196,14 @@ export default {
           sessionId: this.sessionId
         }
 
-        const response = await axios.post(import.meta.env.VITE_WEBHOOK_LINK_TEST, payload, {
+        const response = await axios.post(import.meta.env.VITE_WEBHOOK_LINK_PROD, payload, {
           headers: {"Content-Type": 'application/json'},
-          timeout: 3000
+          timeout: 15000
         })
+        // const response = await axios.post(import.meta.env.VITE_WEBHOOK_LINK_TEST, payload, {
+        //   headers: {"Content-Type": 'application/json'},
+        //   timeout: 3000
+        // })
 
         let botReply = ''
         if (typeof response.data === 'string') {
