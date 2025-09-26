@@ -34,17 +34,17 @@
 
         <!-- Modal Body -->
         <div class="flex-1 bg-gray-50 rounded p-4 max-h-[400px] h-[400px] overflow-y-auto">
-          <div class="h-auto flex flex-col gap-y-4">
-            <div class="chat-bot-response flex flex-wrap justify-start items-center w-full ">
-              <p  v-for="(botMessage, botIndex) in botMessage"
-                  :key="botIndex"
-                  class="text-black bg-slate-200 text-[14px] lg:max-w-[350px] p-4 rounded-[20px]">{{ botMessage }}</p>
-            </div>
-            <div class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2 ">
-              <p  v-for="(message, chatIndex) in chatMessage"
-                  :key="chatIndex"
-                  class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] "
-                  :class="message.length ? 'bg-[#0088FF]' : 'bg-transparent'">{{ message }}</p>
+          <div class="message-wrapper h-auto flex flex-col gap-y-4">
+            <div v-for="(message, index) in messages"
+                 :key="index"
+                 class="message-content flex flex-wrap justify-start items-center w-full ">
+                  <div v-if="message.type === 'user'" class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2">
+                    <p class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] bg-[#0088FF]">{{ message.text }}</p>
+                  </div>
+                  <div v-if="message.type === 'bot'" class="user-response flex flex-wrap flex-col w-full justify-start items-start gap-y-2">
+                    <p class="text-black text-[14px] lg:max-w-[350px] p-4 rounded-[20px] bg-slate-200">{{ message.text }}</p>
+                  </div>
+
             </div>
           </div>
         </div>
@@ -97,12 +97,21 @@ export default {
       showUserMessage: false,
       showError: false,
       errorMessage: '',
-      chatMessage: [],
-      botMessage:[],
+      messages: [],
+
+      sessionId: '',
 
       isLoading: false,
     }
   },
+
+  mounted() {
+    document.addEventListener('keydown', this.handleEscape);
+    this.sessionId = this.createSessionId()
+
+    console.log('Session Generated: ', this.sessionId)
+  },
+
   methods: {
     toggleChat(){
       console.log('toggle chat clicked!')
@@ -128,6 +137,32 @@ export default {
         this.closeModal()
       }
     },
+
+    createSessionId(){
+      try {
+        let sessionId = sessionStorage.getItem('chat_session_id')
+
+        if (!sessionId) {
+          // Create new unique session ID
+          const timestamp = Date.now()
+          const randomString = Math.random().toString(36)
+          sessionId = `session_${timestamp}_${randomString}`
+
+          // Store in sessionStorage
+          sessionStorage.setItem('chat_session_id', sessionId)
+          console.log('🆕 New session created:', sessionId)
+        } else {
+          console.log('📋 Existing session found:', sessionId)
+        }
+
+        return sessionId
+      } catch (error) {
+        console.error('Session storage error:', error)
+        // Fallback if sessionStorage fails
+        return `session_${Date.now()}_${Math.random().toString(36)}`
+      }
+    },
+
     async handleSend(){
       // Reset error state
       this.showError = false;
@@ -142,14 +177,24 @@ export default {
 
       const userText = this.inputValue.trim()
 
-      this.chatMessage.push(userText)
+      this.messages.push({
+        text: userText,
+        type: 'user',
+        timestamp: new Date().toLocaleTimeString(),
+        id: Date.now(),
+        sessionId: this.sessionId,
+      })
       this.inputValue = ''
-      console.log(this.chatMessage)
+      console.log(this.messages)
 
       this.isLoading = true
 
       try {
-        const payload = {text: userText, source: 'vue-client'}
+        const payload = {
+          text: userText,
+          source: 'vue-client',
+          sessionId: this.sessionId
+        }
 
         const response = await axios.post(import.meta.env.VITE_WEBHOOK_LINK_TEST, payload, {
           headers: {"Content-Type": 'application/json'},
@@ -165,31 +210,42 @@ export default {
           botReply = JSON.stringify(response.data)
         }
 
-        this.botMessage.push(botReply)
+        this.messages.push({
+          text: botReply,
+          type: 'bot',
+          timestamp: new Date().toLocaleTimeString(),
+          id: Date.now() + 1,
+          sessionId: this.sessionId
+        })
 
       } catch (err) {
         console.error('Webhook error:', err)
-        this.botMessage.push('⚠️ Error talking to server: ' + err.message)
+        this.messages.push({
+          text: '⚠️ Error talking to server: ' + err.message,
+          type: 'bot',
+          timestamp: new Date().toLocaleTimeString(),
+          id: Date.now() + 2,
+          sessionId: this.sessionId
+        })
       } finally {
         this.isLoading = false
       }
 
-      // return this.userText
 
   },
+
   mounted() {
-    // Add escape key listener when component mounts
     document.addEventListener('keydown', this.handleEscape);
-    //document.addEventListener('keydown', this.handleEnter);
+    this.sessionId = this.createSessionId()
+
+    console.log('Session Generated: ', this.sessionId)
   },
+
   beforeUnmount() {
-    // Clean up event listener when component unmounts
     document.removeEventListener('keydown', this.handleEscape);
-    //document.removeEventListener('keydown', this.handleEnter);
-    this.chatMessage.length = 0
+    this.messages.length = 0
   }
  }
-
 }
 </script>
 
