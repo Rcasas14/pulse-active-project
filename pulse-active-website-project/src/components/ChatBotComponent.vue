@@ -153,7 +153,7 @@ export default {
 
         const response = await axios.post(import.meta.env.VITE_WEBHOOK_LINK_TEST, payload, {
           headers: {"Content-Type": 'application/json'},
-          timeout: 1000
+          timeout: 3000
         })
 
         let botReply = ''
