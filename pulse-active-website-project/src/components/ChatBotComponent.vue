@@ -36,10 +36,11 @@
         <div class="flex-1 bg-gray-50 rounded p-4 max-h-[400px] h-[400px] overflow-y-auto">
           <div class="h-auto flex flex-col gap-y-4">
             <div class="chat-bot-response flex flex-wrap justify-start items-center w-full ">
-              <p class="text-black bg-slate-200 text-[14px] lg:max-w-[350px] p-4 rounded-[20px]">Would you like me to help you set up the specific n8n workflow structure for your gym fitness RAG system, or do you need help with any other aspect of the integration?</p>
+              <p  v-for="(botMessage, botIndex) in botMessage"
+                  :key="botIndex"
+                  class="text-black bg-slate-200 text-[14px] lg:max-w-[350px] p-4 rounded-[20px]">{{ botMessage }}</p>
             </div>
-            <div class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2 "
-                 >
+            <div class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2 ">
               <p  v-for="(message, chatIndex) in chatMessage"
                   :key="chatIndex"
                   class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] "
@@ -76,6 +77,8 @@
 
 <script>
 import { useMotion } from '@vueuse/motion';
+import axios from 'axios';
+//import ref from 'vue';
 
 export default {
   name: 'ChatBotComponent',
@@ -125,7 +128,7 @@ export default {
         this.closeModal()
       }
     },
-    handleSend(){
+    async handleSend(){
       // Reset error state
       this.showError = false;
       this.errorMessage = '';
@@ -137,10 +140,41 @@ export default {
       return;
     }
 
-      this.chatMessage.push(this.inputValue.trim())
+      const userText = this.inputValue.trim()
+
+      this.chatMessage.push(userText)
       this.inputValue = ''
       console.log(this.chatMessage)
-      return this.inputValue
+
+      this.isLoading = true
+
+      try {
+        const payload = {text: userText, source: 'vue-client'}
+
+        const response = await axios.post(import.meta.env.VITE_WEBHOOK_LINK_TEST, payload, {
+          headers: {"Content-Type": 'application/json'},
+          timeout: 1000
+        })
+
+        let botReply = ''
+        if (typeof response.data === 'string') {
+          botReply = response.data
+        } else if (response.data.message) {
+          botReply = response.data.message
+        } else {
+          botReply = JSON.stringify(response.data)
+        }
+
+        this.botMessage.push(botReply)
+
+      } catch (err) {
+        console.error('Webhook error:', err)
+        this.botMessage.push('⚠️ Error talking to server: ' + err.message)
+      } finally {
+        this.isLoading = false
+      }
+
+      // return this.userText
 
   },
   mounted() {
