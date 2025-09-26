@@ -40,7 +40,8 @@
             </div>
             <div class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2 "
                  >
-              <p  v-for="message in chatMessage" :key="message"
+              <p  v-for="(message, chatIndex) in chatMessage"
+                  :key="chatIndex"
                   class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] "
                   :class="message.length ? 'bg-[#0088FF]' : 'bg-transparent'">{{ message }}</p>
             </div>
@@ -94,7 +95,9 @@ export default {
       showError: false,
       errorMessage: '',
       chatMessage: [],
-      botMessage:[]
+      botMessage:[],
+
+      isLoading: false,
     }
   },
   methods: {
@@ -138,12 +141,6 @@ export default {
       this.inputValue = ''
       console.log(this.chatMessage)
       return this.inputValue
-
-    // handleEnter(event){
-    //   if(event.key === 'Enter' && this.showModal){
-    //     this.handleSend()
-    //   }
-    // }
 
   },
   mounted() {
