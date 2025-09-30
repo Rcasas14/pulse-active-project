@@ -10,19 +10,19 @@
         <!-- Navigation Links -->
         <div class="hidden lg:block">
           <div class="ml-10 flex items-baseline space-x-8 pr-4">
-            <a href="/about" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
+            <a href="#about" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
               About
             </a>
-            <a href="/classes" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
+            <a href="#classes" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
               Classes
             </a>
-            <a href="/membership" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
+            <a href="#membership" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
               Membership
             </a>
-            <a href="/trainer" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
+            <a href="#trainer" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
               Trainer
             </a>
-            <a href="/contact" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
+            <a href="#contact" class="px-3 py-2 text-sm font-medium transition-colors" :class="shouldApplyScrolledEffect ? 'text-gray-900 hover:text-gray-600' : (isMainPage ? 'text-white hover:text-gray-200' : 'text-gray-900 hover:text-gray-600')">
               Contact
             </a>
           </div>
@@ -30,10 +30,10 @@
 
         <!-- Log In Button -->
         <div class="hidden lg:block">
-          <button class="px-8 py-2 mx-2 rounded-full text-sm font-extrabold transition-colors cursor-pointer" :class="shouldApplyScrolledEffect ? 'bg-[#1A94FF] text-white hover:bg-[#1580e6]' : (isMainPage ? 'bg-white text-gray-900 hover:bg-gray-100' : 'bg-[#1A94FF] text-white hover:bg-[#1580e6]')">
+          <button class="px-8 py-2 mx-4 rounded-full text-sm font-extrabold transition-colors cursor-pointer" :class="shouldApplyScrolledEffect ? 'bg-[#f97316] text-white hover:bg-white hover:text-black hover:border hover:border-[#f97316]' : (isMainPage ? 'bg-[#f97316] text-white hover:bg-gray-100 hover:text-black' : 'bg-[#f97316] text-white hover:bg-[#f97316]')">
             Log In
           </button>
-          <button class="px-8 py-2 rounded-full text-sm font-extrabold transition-colors cursor-pointer" :class="shouldApplyScrolledEffect ? 'bg-[#1A94FF] text-white hover:bg-[#1580e6]' : (isMainPage ? 'bg-white text-gray-900 hover:bg-gray-100' : 'bg-[#1A94FF] text-white hover:bg-[#1580e6]')">
+          <button class="px-8 py-2 rounded-full text-sm font-extrabold transition-colors cursor-pointer" :class="shouldApplyScrolledEffect ? 'bg-[#f97316] text-white hover:bg-white hover:text-black hover:border hover:border-[#f97316]' : (isMainPage ? 'bg-[#f97316] text-white hover:bg-gray-100 hover:text-black' : 'bg-[#1A94FF] text-white hover:bg-[#f97316]')">
             Sign up
           </button>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <section class="contact-form-section font-plus-jakarta py-16 lg:py-24 bg-slate-50">
+  <section id="contact" class="contact-form-section font-plus-jakarta py-16 lg:py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 

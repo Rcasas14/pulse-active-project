@@ -1,5 +1,5 @@
 <template>
-  <section class="experts-section font-plus-jakarta py-16 lg:py-24 bg-white">
+  <section id="trainer" class="experts-section font-plus-jakarta py-16 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col text-center justify-center items-center gap-y-6 mb-12">
         <h2 class="text-4xl font-bold">Meet Our Expert Trainers</h2>

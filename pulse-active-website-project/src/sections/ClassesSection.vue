@@ -1,5 +1,5 @@
 <template>
-  <section class="feature-section font-plus-jakarta py-16 lg:py-24 shadow-[0_4px_20px_rgba(0,0,0,0.08)] rounded-0 ">
+  <section id="classes" class="feature-section font-plus-jakarta py-16 lg:py-24 shadow-[0_4px_20px_rgba(0,0,0,0.08)] rounded-0 ">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
     <div class="flex flex-col text-center justify-center items-center gap-y-6">
       <h2 class="text-4xl font-bold "> Classes & Programs</h2>
