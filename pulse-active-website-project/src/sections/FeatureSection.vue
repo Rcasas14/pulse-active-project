@@ -4,7 +4,7 @@
     <div class="flex flex-col text-center justify-center items-center gap-y-6">
       <h2 class="text-4xl font-bold "> Why Choose Pulse Active?</h2>
       <p class="text-slate-700 text-lg "> We're more than just a gym. We're a community dedicated to helping you achieve your fitness goals with cutting-edge facilities and personalized support.</p>
-      <div class="grid grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="(items, index) in features"
         :key="index"
         class="feature-card flex flex-col text-center justify-center items-center p-5 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300">

@@ -54,7 +54,7 @@
       <!-- Mobile menu -->
        <transition name="slide">
         <div v-if="mobileMenuOpen" class="lg:hidden overflow-hidden" @click.stop>
-          <div class="px-2 pt-2 pb-3 space-y-1 bg-[#4A9DB1]">
+          <div class="px-2 pt-2 pb-3 space-y-1 bg-[#f97316]">
             <a href="/about" class="text-white hover:text-gray-200 block px-3 py-2 text-base font-medium">
               About
             </a>
