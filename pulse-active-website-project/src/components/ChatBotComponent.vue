@@ -1,7 +1,7 @@
 <template>
 
-  <div class="chat-head fixed bottom-8 md:bottom-8 md:right-8  sm:bottom-6 sm:right-6 z-[1000]">
-    <button class="w-[60px] h-[60px] text-white border-none flex items-center justify-center shadow-[0_4px_20px_rgba(38,197,217,0.3)] bg-[#0088FF] rounded-full transition-all duration-300 ease-in-out hover:scale-110
+  <div class="chat-head fixed bottom-3 right-3 md:bottom-8 md:right-8  sm:bottom-6 sm:right-6 z-[1000]">
+    <button class="w-[60px] h-[60px] text-white border-none flex items-center justify-center shadow-[0_4px_20px_rgba(38,197,217,0.3)] bg-[#f97316] rounded-full transition-all duration-300 ease-in-out hover:scale-110
                     hover:shadow-[0_6px_25px_rgba(38,197,217,0.4)] animate-pulse sm:w-[60px] sm:h-[60px] cursor-pointer"
                     @click="openModal()">
       <img :src="chatBubble" alt="" class="w-5 h-5 text-white">
@@ -10,7 +10,7 @@
 
 
   <!-- Chat Bot Modal -->
-   <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center"
+   <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center px-4 md:p-0"
         v-show="showModal">
 
           <div class="fixed inset-0 bg-black/70 transition-opacity"></div>
@@ -19,8 +19,8 @@
        <div @click.stop class="relative bg-white h-auto rounded-lg  shadow-xl w-[450px]">
 
         <!-- Modal Header -->
-        <div class="header flex items-center justify-between gap-2 mb-4 flex-row w-full bg-[#0088FF] p-4 rounded-tl-lg rounded-tr-lg">
-          <div class="w-[45px] h-[45px] bg-[#1a94ff] flex items-center justify-center rounded-full">
+        <div class="header flex items-center justify-between gap-2 mb-4 flex-row w-full bg-[#f97316] p-4 rounded-tl-lg rounded-tr-lg">
+          <div class="w-[45px] h-[45px] bg-[#f97316]  flex items-center justify-center rounded-full">
             <img :src="chatBubble" class="w-6 h-6" alt="">
           </div>
           <div class="flex-1">
@@ -39,7 +39,7 @@
                  :key="index"
                  class="message-content flex flex-wrap justify-start items-center w-full ">
                   <div v-if="message.type === 'user'" class="user-response flex flex-wrap flex-col w-full justify-end items-end gap-y-2">
-                    <p class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] bg-[#0088FF]">{{ message.text }}</p>
+                    <p class="text-white text-[14px] lg:max-w-[350px] p-4 rounded-[20px] bg-[#f97316]">{{ message.text }}</p>
                   </div>
                   <div v-if="message.type === 'bot'" class="user-response flex flex-wrap flex-col w-full justify-start items-start gap-y-2">
                     <p class="text-black text-[14px] lg:max-w-[350px] p-4 rounded-[20px] bg-slate-200">{{ message.text }}</p>
@@ -62,7 +62,7 @@
               <div v-if="showError" class="text-red-500 font-semibold text-sm p-2 absolute bottom-2 right-20">
                 {{ errorMessage }}
               </div>
-            <div class="w-[46px] h-[40px] bg-[#1a94ff] flex items-center justify-center rounded-[20px] pr-[2px] cursor-pointer hover: transition-all duration-300 ease-in-out" @click="handleSend()">
+            <div class="w-[46px] h-[40px] bg-[#f97316] flex items-center justify-center rounded-[20px] pr-[2px] cursor-pointer hover: transition-all duration-300 ease-in-out" @click="handleSend()">
             <img :src="sendIcon" class="w-6 h-6" alt="">
           </div>
           </div>

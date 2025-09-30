@@ -10,12 +10,12 @@
 
   <chat-bot-component></chat-bot-component>
 
-    <section class="hero-section min-h-screen font-plus-jakarta grid place-items-center relative ">
+    <section class="hero-section min-h-screen font-plus-jakarta grid place-items-center relative px-3">
       <div class="hero-container w-full flex flex-col justify-center items-center text-center mx-auto">
-        <h1 class="font-extrabold text-white text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Transform Your</h1>
+        <h1 class="font-extrabold text-white text-3xl xs:text-[40px] sm:text-4xl text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Transform Your</h1>
         <h1 class=" font-extrabold text-[#f97316] text-3xl xs:text-[40px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[82px] leading-tight drop-shadow-lg">Body & Mind</h1>
-        <p class="description text-center text-white font-semibold text-2xl max-w-[925px]">Join Pulse Active Gym and discover your strongest self with state-of-the-art equipment, expert trainers, and a supportive community.</p>
-        <div class="cta-buttons flex flex-row py-4 gap-x-4">
+        <p class="description text-center text-white font-semibold text-md lg:text-2xl max-w-[925px]">Join Pulse Active Gym and discover your strongest self with state-of-the-art equipment, expert trainers, and a supportive community.</p>
+        <div class="cta-buttons flex flex-col lg:flex-row py-4 gap-4">
           <button class="px-8 py-2 text-[18px] bg-[#f97316] rounded-full text-sm font-extrabold transition-colors cursor-pointer text-white hover:bg-slate-600">
             Start Your Journey
           </button>

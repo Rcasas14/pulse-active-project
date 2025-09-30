@@ -4,7 +4,7 @@
     <div class="flex flex-col text-center justify-center items-center gap-y-6">
       <h2 class="text-4xl font-bold "> Classes & Programs</h2>
       <p class="text-slate-700 text-lg "> From high-intensity workouts to mindful yoga sessions, we offer diverse classes for every fitness level.</p>
-      <div class="grid grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="(item, index) in classes" :key="index" class="classes-card max-w-xl flex flex-col text-center justify-center items-center bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300">
           <div class="h-auto flex flex-col w-full relative h-[200px]">
 
